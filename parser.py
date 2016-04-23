@@ -78,6 +78,14 @@ def query(file,asteroid):
 
 	return rows
 
+def differentiate(data):
+	
+	differentiated = []
+	for i in range(len(data)-1):
+		differentiated.append(data[i+1] - data[i])
+
+	return data
+
 def main():
 	
 	generate_csv(DATA_24,24)
@@ -128,13 +136,15 @@ def main():
 					columns_written = True
 					output_file.write('ASTER_CLASS,')
 					for index in range(len(combined_columns)):
-						output_file.write(combined_columns[index]+',')
-					output_file.write("\n")
+						output_file.write(combined_columns[index])
+						if (index < len(combined_columns)-1):
+							output_file.write(",")
 
 				output_file.write(asteroid_class+",")
 				for index in range(len(row)):
-					output_file.write(row[index]+',')
-				output_file.write("\n")
+					output_file.write(row[index])
+					if (index < len(row)-1):
+						output_file.write(",")
 
 	output_file.close()
 

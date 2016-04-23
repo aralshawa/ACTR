@@ -1,12 +1,15 @@
 import re
 import csv
 import itertools as IT
+import os
 # import numpy
 
 import AsteroidTypes
 
-DATA_24 = "C:/Users/Developer/Desktop/EAR_A_DBP_3_RDR_24COLOR_V2_1/data/data0/"
-DATA_52 = "C:/Users/Developer/Desktop/EAR_A_RDR_3_52COLOR_V2_1/data/data0/"
+#DATA_24 = "C:/Users/Developer/Desktop/EAR_A_DBP_3_RDR_24COLOR_V2_1/data/data0/"
+#DATA_52 = "C:/Users/Developer/Desktop/EAR_A_RDR_3_52COLOR_V2_1/data/data0/"
+DATA_52 = os.path.dirname(os.path.realpath('__file__')) + "\\reflectancedata\\"
+DATA_24 = DATA_52
 
 known_asteroids = {}
 asteroid_class_model = {}
@@ -238,6 +241,7 @@ def build_asteroid_class_model_diff():
 
 	i = 0
 	for c in classes:
+		print (c)
 		diff = [0] * num_diff
 		num_to_average = 0;
 		for asteroid_id in known_asteroids:

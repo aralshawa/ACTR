@@ -1,18 +1,20 @@
 import re
+import csv
+import itertools as IT
 
-DATA_FILE = "C:/Users/Developer/Desktop/EAR_A_DBP_3_RDR_24COLOR_V2_1/data/data0/24color.tab"
-INFO_FILE = "C:/Users/Developer/Desktop/EAR_A_DBP_3_RDR_24COLOR_V2_1/data/data0/24color.lbl"
+import AsteroidTypes
 
-NEW_FILE = "parsed_file.csv"
+DATA_24 = "C:/Users/Developer/Desktop/EAR_A_DBP_3_RDR_24COLOR_V2_1/data/data0/"
+DATA_52 = "C:/Users/Developer/Desktop/EAR_A_RDR_3_52COLOR_V2_1/data/data0/"
 
-def main():
+def generate_csv(path,color):
 
-	output_file = open(NEW_FILE, 'w')
+	output_file = open('spectrum_'+str(color)+'.csv', 'w')
 
-	with open(DATA_FILE) as f:
+	with open(path+str(color)+"color.tab") as f:
 		data_contents = f.readlines()
 
-	with open(INFO_FILE) as f:
+	with open(path+str(color)+"color.lbl") as f:
 		info_contents = f.readlines()
 
 	column_list = []
@@ -37,8 +39,10 @@ def main():
 				state = "search"
 				column_list.append( line.split('= "',1)[1].replace(" ","").replace("\"","").replace("\n",""))
 
-	for column in column_list:
-		output_file.write(column+',')
+	for column_index in range(len(column_list)):
+		output_file.write(column_list[column_index])
+		if (column_index < len(column_list)-1):
+			output_file.write(',')
 
 	output_file.write("\n")
 
@@ -54,14 +58,84 @@ def main():
 				elif (index == 2):
 					output_file.write(',')
 				else:
-					output_file.write(data+',')
+					output_file.write(data)
+					if (index < len(asteroid_data)-1):
+						output_file.write(',')
 			else:
-				output_file.write(data+',')
+				output_file.write(data)
+				if (index < len(asteroid_data)-1):
+					output_file.write(',')
 			index = index + 1
 
 		output_file.write("\n")
 
 	output_file.close();
 
+def query(file,asteroid):
+	with open(file, 'r') as f:
+		reader = csv.DictReader(f)
+		rows = [row for row in reader if row['AST_NUMBER'] == asteroid]
+
+	return rows
+
+def main():
+	
+	generate_csv(DATA_24,24)
+	generate_csv(DATA_52,52)
+	
+	columns_written = False
+
+	output_file = open('combined.csv', 'w')
+
+	for asteroid_class in AsteroidTypes.AsteroidsOfType:
+		asteroid_numbers = AsteroidTypes.AsteroidsOfType[asteroid_class]
+		for asteroid in asteroid_numbers:
+
+			s24 = query('spectrum_24.csv',str(asteroid))
+			s52 = query('spectrum_52.csv',str(asteroid))
+
+			if (len(s24) > 0 and len(s52) > 0):
+
+				row = []
+				
+				combined_columns = [];
+
+				with open('spectrum_24.csv') as f:
+					contents = f.readlines()
+					combined_columns = contents[0].split(',')[:34]
+				
+				for line_index in range(len(contents)):
+					values = contents[line_index].split(',')
+					if (values[0] == str(asteroid)):
+						row = values[:34]
+						break
+
+				f.close()
+
+				with open('spectrum_52.csv') as f:
+					contents = f.readlines()
+					combined_columns = combined_columns + contents[0].split(',')[3:]
+				
+				for line_index in range(len(contents)):
+					values = contents[line_index].split(',')
+					if (values[0] == str(asteroid)):
+						row = row + values[3:]
+						break
+
+				f.close()
+				
+				if (columns_written == False):
+					columns_written = True
+					output_file.write('ASTER_CLASS,')
+					for index in range(len(combined_columns)):
+						output_file.write(combined_columns[index]+',')
+					output_file.write("\n")
+
+				output_file.write(asteroid_class+",")
+				for index in range(len(row)):
+					output_file.write(row[index]+',')
+				output_file.write("\n")
+
+	output_file.close()
 
 main()

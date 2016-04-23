@@ -1,6 +1,7 @@
 import re
 import csv
 import itertools as IT
+# import numpy
 
 import AsteroidTypes
 
@@ -10,7 +11,12 @@ DATA_52 = "C:/Users/Developer/Desktop/EAR_A_RDR_3_52COLOR_V2_1/data/data0/"
 known_asteroids = {}
 asteroid_class_model = {}
 
+#C
 test_data = [0.72,0.78,0.8,0.92,0.9,0.96,0.97,1.01,1,0.98,1.03,1.03,1.05,1.02,1.02,1,0.9821,0.9817,0.9814,0.9831,0.9649,0.967,0.9691,0.9663,0.9746,0.9642,0.979,0.9834,0.9611,0.9768,0.9666,0.9659,0.9601,0.9592,0.9679,0.9746,0.9706,0.9812,0.9772,0.9729,0.986,0.9865,0.9915,0.993,1.005,1.0122,1.003,1.0133,1.0051,0.9989,1.0054,1.022,1.0222,1.0216,1.0222,1.0393,1.0408,1.0515,1.0701,1.0844,1.0865,1.0911,1.0708,1.0879,1.099,1.0977,1.1003,1.0575]
+#M
+#test_data = [.87,.86,.86,.90,.94,.95,.99,.96,1.02,1.01,1.08,1.09,1.12,1.10,1.14,1.13,1.1136,1.1273,1.1516,1.1544,1.1497,1.1748,1.1804,1.2191,1.2437,1.2348,1.2557,1.2585,1.2454,1.2615,1.2792,1.2653,1.2698,1.2637,1.2956,1.2868,1.2743,1.2971,1.3220,1.3304,1.3133,1.3159,1.3113,1.3305,1.3314,1.3363,1.3442,1.3328,1.3359,1.3236,1.3322,1.3396,1.3415,1.3502,1.3548,1.3660,1.3760,1.3778,1.3911,1.3952,1.3953,1.3937,1.4074,1.4188,1.4462,1.4422,1.4569,1.4223]
+#A
+#test_data = [.40,-9.99,.46,.60,.67,.79,.86,.94,.97,1.08,1.13,1.26,1.28,1.26,1.33,1.23,1.2577,1.2503,1.2761,1.2520,-.9999,1.2284,1.2129,1.1465,1.1310,1.1739,1.1242,1.1420,1.2184,1.2449,1.2459,1.2884,1.3317,1.3243,1.3333,1.4185,1.4443,1.4536,1.5049,1.5981,1.7001,1.6675,1.7188,1.7449,1.7875,1.8136,1.8649,1.8743,1.7614,1.8059,1.8414,1.8356,1.8462,1.8314,1.8588,1.8947,1.8885,1.9076,1.8931,1.8782,1.8973,1.9160,1.9350,1.9792,1.9644,2.0080,2.1363,1.9451]
 
 def generate_csv(path,color):
 
@@ -153,9 +159,7 @@ def combine():
 			
 			known_asteroids[data[1]] = [data[0]]+data[2:len(data)]
 
-def compare(input_data):
-
-	len(test_data)
+def compare_diff(input_data):
 
 	input_diff = []
 
@@ -165,9 +169,6 @@ def compare(input_data):
 	scores = {}
 	for asteroid_class in asteroid_class_model:
 		score = 0
-		print(len(input_diff))
-		print(len(asteroid_class_model[asteroid_class]))
-		print("\n")
 		for i in range(len(input_diff)):
 			score = score + (input_diff[i] - asteroid_class_model[asteroid_class][i])**2
 		scores[asteroid_class] = score
@@ -182,20 +183,58 @@ def compare(input_data):
 		if (scores[c] < scores[min_score]):
 			min_score = c
 
-	print(c)
+	print(min_score)
+
+# def compare_corrcoeff(input_data):
+# 	scores = {}
+# 	for asteroid_class in asteroid_class_model:
+# 		score = numpy.corrcoef(input_data,asteroid_class_model[asteroid_class])
+# 		scores[asteroid_class] = score[0][1]
+
+# 	max_score = ''
+	
+# 	for c in scores:
+# 		max_score = c
+# 		break
+
+# 	for c in scores:
+# 		if (scores[c] > scores[max_score]):
+# 			max_score = c
+
+# 	print(max_score)
 
 
-def build_asteroid_class_model():
+# def build_asteroid_class_model():
+
+# 	classes = []
+# 	for asteroid_id in known_asteroids:
+# 		if (not(known_asteroids[asteroid_id][0] in classes)):
+# 			classes.append(known_asteroids[asteroid_id][0])
+
+# 	for c in classes:
+# 		data = [0] * (len(known_asteroids[asteroid_id])-1)
+# 		num_to_average = 0;
+# 		for asteroid_id in known_asteroids:
+# 			if (known_asteroids[asteroid_id][0] == c):
+# 				num_to_average = num_to_average + 1
+# 				for i in range(1,len(known_asteroids[asteroid_id])):
+# 					data[i-1] = data[i-1] + (float(known_asteroids[asteroid_id][i]))
+
+# 		if (num_to_average > 0):
+# 			for i in range(len(known_asteroids[asteroid_id])-1): 
+# 				data[i] = data[i]/num_to_average
+
+# 		asteroid_class_model[c] = data
+
+def build_asteroid_class_model_diff():
 
 	classes = []
-	temp=""
+	temp = ""
 	for asteroid_id in known_asteroids:
 		temp = asteroid_id
 		num_diff = len(known_asteroids[asteroid_id])-2
 		if (not(known_asteroids[asteroid_id][0] in classes)):
 			classes.append(known_asteroids[asteroid_id][0])
-
-	print(known_asteroids[temp])
 
 	i = 0
 	for c in classes:
@@ -220,7 +259,7 @@ def main():
 	generate_csv(DATA_24,24)
 	generate_csv(DATA_52,52)
 	combine()
-	build_asteroid_class_model()
-	compare(test_data)
-
+	build_asteroid_class_model_diff()
+	compare_diff(test_data)
+	
 main()

@@ -666,7 +666,7 @@
                     </sceneView>
                     <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="132" horizontalPageScroll="10" verticalLineScroll="132" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hK3-ys-V1F">
                         <rect key="frame" x="-1" y="-1" width="173" height="721"/>
-                        <clipView key="contentView" ambiguous="YES" id="DSt-Kb-prw">
+                        <clipView key="contentView" ambiguous="YES" drawsBackground="NO" id="DSt-Kb-prw">
                             <rect key="frame" x="1" y="23" width="171" height="697"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
@@ -698,8 +698,8 @@
                                                             <rect key="frame" x="3" y="10" width="160" height="110"/>
                                                             <subviews>
                                                                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bV4-53-pQX">
-                                                                    <rect key="frame" x="52" y="57" width="56" height="56"/>
-                                                                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="button" id="K4e-a1-cNr"/>
+                                                                    <rect key="frame" x="55" y="60" width="50" height="50"/>
+                                                                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="K4e-a1-cNr"/>
                                                                 </imageView>
                                                                 <stackView distribution="fill" orientation="vertical" alignment="centerX" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bSv-aG-y5F">
                                                                     <rect key="frame" x="27" y="0.0" width="106" height="52"/>
@@ -795,7 +795,7 @@
                                     </connections>
                                 </tableView>
                             </subviews>
-                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            <nil key="backgroundColor"/>
                         </clipView>
                         <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="eDh-2x-fZQ">
                             <rect key="frame" x="1" y="119" width="223" height="15"/>
@@ -810,6 +810,14 @@
                             <autoresizingMask key="autoresizingMask"/>
                         </tableHeaderView>
                     </scrollView>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fX8-y1-N7d">
+                        <rect key="frame" x="6" y="696" width="160" height="22"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="New Asteroids" id="d13-AK-atD">
+                            <font key="font" size="14" name=".AppleSystemUIFontDemi"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
                 </subviews>
                 <constraints>
                     <constraint firstItem="536" firstAttribute="leading" secondItem="372" secondAttribute="leading" constant="172" id="541"/>

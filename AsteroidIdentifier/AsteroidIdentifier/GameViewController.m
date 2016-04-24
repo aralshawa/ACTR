@@ -111,7 +111,7 @@
 	
 	[_asteroid addChildNode:_textNode];
 	
-	
+	// Build the title node  - - -
 	_titleNode = [SCNNode node];
 	
 	SCNText *titleText = [SCNText textWithString:@"Asteroid 117" extrusionDepth:10.f];
@@ -139,6 +139,7 @@
 	_titleText = titleText;
 	
 	
+	// Build the subtitle node - - -
 	_subtitleNode = [SCNNode node];
 	
 	SCNText *subtitleText = [SCNText textWithString:@"Class A :D\nClass B :(" extrusionDepth:2.f];
@@ -168,10 +169,12 @@
 	
 	_subtitleText = subtitleText;
 	
+	
 	[_textNode addChildNode:_titleNode];
 	[_textNode addChildNode:_subtitleNode];
 	
-	// Fade In
+	
+	// Fade In of the two title nodes at different rates
 	_titleNode.opacity = 0;
 	_subtitleNode.opacity = 0;
 	[SCNTransaction begin];

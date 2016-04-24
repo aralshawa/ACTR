@@ -166,7 +166,7 @@ const float wavelengthEntries [] = {0.33, 0.34, 0.355, 0.4, 0.43, 0.47, 0.5, 0.5
 	// Build the title node  - - -
 	_titleNode = [SCNNode node];
 	
-	SCNText *titleText = [SCNText textWithString:@"Asteroid Vesta" extrusionDepth:10.f];
+	SCNText *titleText = [SCNText textWithString:@"ACTR" extrusionDepth:10.f];
 	_titleNode.geometry = titleText;
 	titleText.flatness = .4f;
 	titleText.chamferRadius = 1.f;
@@ -194,7 +194,7 @@ const float wavelengthEntries [] = {0.33, 0.34, 0.355, 0.4, 0.43, 0.47, 0.5, 0.5
 	// Build the subtitle node - - -
 	_subtitleNode = [SCNNode node];
 	
-	SCNText *subtitleText = [SCNText textWithString:@"Class ? :D\nClass ? :(" extrusionDepth:2.f];
+	SCNText *subtitleText = [SCNText textWithString:@"Make a selection\n " extrusionDepth:2.f];
 	
 	_subtitleNode.geometry = subtitleText;
 	subtitleText.flatness = .4f;

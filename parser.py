@@ -1,15 +1,15 @@
+import math
 import re
 import csv
 import itertools as IT
-import os
+import collections
+
 # import numpy
 
 import AsteroidTypes
 
-#DATA_24 = "C:/Users/Developer/Desktop/EAR_A_DBP_3_RDR_24COLOR_V2_1/data/data0/"
-#DATA_52 = "C:/Users/Developer/Desktop/EAR_A_RDR_3_52COLOR_V2_1/data/data0/"
-DATA_52 = os.path.dirname(os.path.realpath('__file__')) + "\\reflectancedata\\"
-DATA_24 = DATA_52
+DATA_24 = "C:/Users/Developer/Desktop/EAR_A_DBP_3_RDR_24COLOR_V2_1/data/data0/"
+DATA_52 = "C:/Users/Developer/Desktop/EAR_A_RDR_3_52COLOR_V2_1/data/data0/"
 
 known_asteroids = {}
 asteroid_class_model = {}
@@ -165,6 +165,7 @@ def combine():
 def compare_diff(input_data):
 
 	input_diff = []
+	confidence = {}
 
 	for i in range(len(input_data)-1):
 		input_diff.append(input_data[i+1]-input_data[i])
@@ -183,10 +184,14 @@ def compare_diff(input_data):
 		break
 
 	for c in scores:
+		confidence[c] = round(1000*math.exp(-scores[c]),3)
 		if (scores[c] < scores[min_score]):
 			min_score = c
 
-	print(min_score)
+	print("ASTEROID CLASS: "+min_score)
+	print("CONFIDENCE:")
+	for c in confidence:
+		print(c+" --- "+str(confidence[c]))
 
 # def compare_corrcoeff(input_data):
 # 	scores = {}
@@ -232,23 +237,19 @@ def compare_diff(input_data):
 def build_asteroid_class_model_diff():
 
 	classes = []
-	temp = ""
 	for asteroid_id in known_asteroids:
-		temp = asteroid_id
 		num_diff = len(known_asteroids[asteroid_id])-2
 		if (not(known_asteroids[asteroid_id][0] in classes)):
 			classes.append(known_asteroids[asteroid_id][0])
 
 	i = 0
 	for c in classes:
-		print (c)
 		diff = [0] * num_diff
 		num_to_average = 0;
 		for asteroid_id in known_asteroids:
 			i = i + 1
 			if (known_asteroids[asteroid_id][0] == c):
 				num_to_average = num_to_average + 1
-				print(len(known_asteroids[asteroid_id]))
 				for i in range(1,num_diff+1):
 					diff[i-1] = diff[i-1] + (float(known_asteroids[asteroid_id][i+1])-float(known_asteroids[asteroid_id][i]))
 

@@ -9,6 +9,9 @@
 #import "GameViewController.h"
 #import "AsteroidCellView.h"
 
+#import <QuartzCore/QuartzCore.h>
+#import <CorePlot/CorePlot.h>
+
 @implementation GameViewController {
 	SCNScene *_scene;
 	
@@ -83,6 +86,9 @@
 	_scene = scene;
 
 	[self initGameViewTitles];
+	
+	// NSTableView
+//	self.asteroidTableView.selectionHighlightStyle = NSTableViewSelectionHighlightStyleNone;
 	
 	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
 		// Retreieve asteroid data from PropertyList
@@ -197,6 +203,89 @@
 - (void)updateSubtitleWithString:(NSString *)subtitle
 {
 	_subtitleText.string = subtitle;
+}
+
+#pragma mark - <NSTableViewDelegate, NSTableViewDataSource>
+
+- (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView
+{
+	return [_unknownAsteroidsDictionary count];
+}
+
+//- (CGFloat)tableView:(NSTableView *)tableView heightOfRow:(NSInteger)row
+//{
+//	
+//}
+
+- (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
+{
+	AsteroidCellView *cellView = [tableView makeViewWithIdentifier:@"AsteroidCellView" owner:self];
+	
+	NSString *entryKey = [_unknownAsteroidsDictionary allKeys][row]; // TODO: This is fragile and not correct.
+	
+	NSArray *splitKey = [entryKey componentsSeparatedByString:@"_"];
+	NSString *entryID = splitKey[0];
+	NSString *entryName = splitKey[1];
+	
+	cellView.asteroidIDLabel.stringValue = entryID;
+	cellView.asteroidNameLabel.stringValue = entryName;
+	cellView.asteroidImageView.image = [NSImage imageNamed:@"asteroid_icon"];
+	
+	return cellView;
+}
+
+- (BOOL)tableView:(NSTableView *)tableView shouldSelectRow:(NSInteger)row
+{
+	if (tableView.selectedRow != row) {
+		NSString *entryKey = [_unknownAsteroidsDictionary allKeys][row]; // TODO: This is fragile and not correct.
+		NSArray *splitKey = [entryKey componentsSeparatedByString:@"_"];
+		NSString *entryID = splitKey[0];
+		NSString *entryName = splitKey[1];
+		NSString *entrySpectrum = [[_unknownAsteroidsDictionary objectForKey:entryKey] stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"[]"]];
+		NSArray *spectrumEntries = [entrySpectrum componentsSeparatedByString:@","];
+		
+		// Update the titles to show progress
+		dispatch_async(dispatch_get_main_queue(), ^{
+			[self updateTitleWithString:[NSString stringWithFormat:@"#%@ - %@", entryID, entryName]];
+			[self updateSubtitleWithString:@"Evaluating..."];
+		});
+		
+		// Dispatch call python scripts to evaluate confidence scores based on known data
+		dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+			// TODO: Bring these paths up to a prepros macro
+			NSString *path = @"/Library/Frameworks/Python.framework/Versions/3.5/bin/python3";
+			NSArray *args = [[NSArray arrayWithObjects:@"/Users/AbdulAl-shawa/Documents/Developer/spaceapps2016/parser.py", nil] arrayByAddingObjectsFromArray:spectrumEntries];
+			NSTask *pyOp = [[NSTask alloc] init];
+			pyOp.launchPath = path;
+			
+			NSPipe *outputPipe = [NSPipe pipe];
+			[pyOp setStandardOutput:outputPipe];
+			
+			pyOp.arguments = args;
+			[pyOp launch];
+			[pyOp waitUntilExit];
+			
+			NSData *outputData = [[outputPipe fileHandleForReading] readDataToEndOfFile];
+			NSString *outputString = [[NSString alloc] initWithData:outputData encoding:NSUTF8StringEncoding];
+			
+			NSArray *alternatingClassVsConfScores = [outputString componentsSeparatedByString:@","];
+			
+			NSMutableArray *combined = [NSMutableArray array];
+			for (NSUInteger i = 0; i < alternatingClassVsConfScores.count; i+= 2) {
+				[combined addObject: @{@"type" : alternatingClassVsConfScores[i], @"conf": [NSNumber numberWithFloat:[alternatingClassVsConfScores[i + 1] floatValue]]}];
+			}
+			
+			[combined sortUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"conf" ascending:NO]]];
+			
+			dispatch_async(dispatch_get_main_queue(), ^{
+				[self updateSubtitleWithString:[NSString stringWithFormat:@"Class %@  High Conf\nClass %@  Runner Up", combined[0][@"type"], combined[1][@"type"]]];
+			});
+		});
+		
+		return YES;
+	} else {
+		return NO;
+	}
 }
 
 @end

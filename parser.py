@@ -189,10 +189,16 @@ def compare_diff(input_data):
 		if (scores[c] < scores[min_score]):
 			min_score = c
 
-	print("ASTEROID CLASS: "+min_score)
-	print("CONFIDENCE:")
+	# print("ASTEROID CLASS: "+min_score)
+	# print("CONFIDENCE:")
+	out = ""
+	i = 0
 	for c in confidence:
-		print(c+" --- "+str(confidence[c]))
+		out = out + c + "," + str(confidence[c])
+		if(i < len(confidence)-1):
+			out = out + ","
+		i = i + 1
+	print(out)
 
 # def compare_corrcoeff(input_data):
 # 	scores = {}
@@ -262,7 +268,10 @@ def build_asteroid_class_model_diff():
 
 def main():
 
-	test_data = sys.argv[1:]
+	test_data = []
+	test_args = sys.argv[1:]
+	for i in range(len(test_args)):
+		test_data.append(float(test_args[i]))
 
 	generate_csv(DATA_24,24)
 	generate_csv(DATA_52,52)

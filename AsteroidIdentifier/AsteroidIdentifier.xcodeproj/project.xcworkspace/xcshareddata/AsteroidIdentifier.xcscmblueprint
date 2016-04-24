@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "494A915C633E9119DBC6F570D5D64BFCCF713C7E",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "8B3D884E5CB77CFCF2CE65E14C999AAC1DC843A5" : 0,
+    "494A915C633E9119DBC6F570D5D64BFCCF713C7E" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "9640257A-D429-405A-9189-07A0577E5357",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "8B3D884E5CB77CFCF2CE65E14C999AAC1DC843A5" : "spaceapps2016\/AsteroidIdentifier\/core-plot\/",
+    "494A915C633E9119DBC6F570D5D64BFCCF713C7E" : "spaceapps2016\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "AsteroidIdentifier",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "AsteroidIdentifier\/AsteroidIdentifier.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/bitbucket.org\/liu-sy\/spaceapps2016.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "494A915C633E9119DBC6F570D5D64BFCCF713C7E"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/core-plot\/core-plot.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "8B3D884E5CB77CFCF2CE65E14C999AAC1DC843A5"
+    }
+  ]
+}

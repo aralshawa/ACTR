@@ -9,6 +9,8 @@
 #import "GameViewController.h"
 #import "AsteroidCellView.h"
 
+const float wavelengthEntries [] = {0.33, 0.34, 0.355, 0.4, 0.43, 0.47, 0.5, 0.54, 0.57, 0.6, 0.635, 0.67, 0.7, 0.73, 0.765, 0.8, 0.83, 0.8533, 0.8776, 0.9021, 0.9265, 0.951, 0.9755, 1.0001, 1.0247, 1.0493, 1.074, 1.0987, 1.1234, 1.1482, 1.173, 1.1978, 1.2227, 1.2476, 1.2726, 1.2976, 1.3226, 1.3476, 1.3727, 1.3978, 1.423, 1.4482, 1.4734, 1.4987, 1.524, 1.549, 1.5747, 1.6001, 1.491, 1.552, 1.615, 1.675, 1.735, 1.795, 1.853, 1.913, 1.97, 2.028, 2.084, 2.14, 2.196, 2.252, 2.306, 2.361, 2.414, 2.466, 2.519, 2.57};
+
 @implementation GameViewController {
 	SCNScene *_scene;
 	
@@ -77,8 +79,8 @@
 //    self.gameView.allowsCameraControl = YES;
 	
     // show statistics such as fps and timing information
-    self.gameView.showsStatistics = YES;
-    
+//    self.gameView.showsStatistics = YES;
+	
     // configure the view
     self.gameView.backgroundColor = [NSColor blackColor];
 	
@@ -141,7 +143,7 @@
 	CPTXYPlotSpace *plotSpace = (CPTXYPlotSpace *)graph.defaultPlotSpace;
 	
 	[plotSpace setYRange: [CPTPlotRange plotRangeWithLocation:[NSDecimalNumber decimalNumberWithDecimal:CPTDecimalFromFloat(0)] length:[NSDecimalNumber decimalNumberWithDecimal:CPTDecimalFromFloat(2.01)]]];
-	[plotSpace setXRange: [CPTPlotRange plotRangeWithLocation:[NSDecimalNumber decimalNumberWithDecimal:CPTDecimalFromFloat(0)] length:[NSDecimalNumber decimalNumberWithDecimal:CPTDecimalFromFloat(68)]]];
+	[plotSpace setXRange: [CPTPlotRange plotRangeWithLocation:[NSDecimalNumber decimalNumberWithDecimal:CPTDecimalFromFloat(0)] length:[NSDecimalNumber decimalNumberWithDecimal:CPTDecimalFromFloat(2.6)]]];
  
 	// Create the plot (we do not define actual x/y values yet, these will be supplied by the datasource...)
 	CPTScatterPlot* plot = [[CPTScatterPlot alloc] initWithFrame:CGRectZero];
@@ -340,12 +342,13 @@
 -(NSNumber *)numberForPlot:(CPTPlot *)plot field:(NSUInteger)fieldEnum recordIndex:(NSUInteger)index
 {
 	NSString *entrySpectrum = [[_unknownAsteroidsDictionary objectForKey:_selectedAsteroidKey] stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"[]"]];
+	
 	NSArray *spectrumEntries = [entrySpectrum componentsSeparatedByString:@","];
 	
 	// We need to provide an X or Y (this method will be called for each) value for every index
 	if(fieldEnum == CPTScatterPlotFieldX)
 	{
-		return [NSNumber numberWithUnsignedLong:index];
+		return [NSNumber numberWithFloat:wavelengthEntries[index]];
 	} else {
 		return [NSNumber numberWithFloat:[spectrumEntries[index] floatValue]];
 	}

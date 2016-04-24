@@ -14,6 +14,8 @@
 		5546ECF81CCBE6FA002A1E0A /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 5546ECF71CCBE6FA002A1E0A /* art.scnassets */; };
 		5546ECFA1CCBE6FA002A1E0A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5546ECF91CCBE6FA002A1E0A /* Assets.xcassets */; };
 		5546ECFD1CCBE6FA002A1E0A /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5546ECFB1CCBE6FA002A1E0A /* MainMenu.xib */; };
+		555C98BA1CCC49DB009D1265 /* PresetUnknownAsteroids.plist in Resources */ = {isa = PBXBuildFile; fileRef = 555C98B91CCC49DB009D1265 /* PresetUnknownAsteroids.plist */; };
+		555C98BD1CCC5AD2009D1265 /* AsteroidCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 555C98BC1CCC5AD2009D1265 /* AsteroidCellView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +31,9 @@
 		5546ECF91CCBE6FA002A1E0A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5546ECFC1CCBE6FA002A1E0A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		5546ECFE1CCBE6FA002A1E0A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		555C98B91CCC49DB009D1265 /* PresetUnknownAsteroids.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = PresetUnknownAsteroids.plist; sourceTree = "<group>"; };
+		555C98BB1CCC5AD2009D1265 /* AsteroidCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsteroidCellView.h; sourceTree = "<group>"; };
+		555C98BC1CCC5AD2009D1265 /* AsteroidCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsteroidCellView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +77,9 @@
 				5546ECFB1CCBE6FA002A1E0A /* MainMenu.xib */,
 				5546ECFE1CCBE6FA002A1E0A /* Info.plist */,
 				5546ECEE1CCBE6FA002A1E0A /* Supporting Files */,
+				555C98B91CCC49DB009D1265 /* PresetUnknownAsteroids.plist */,
+				555C98BB1CCC5AD2009D1265 /* AsteroidCellView.h */,
+				555C98BC1CCC5AD2009D1265 /* AsteroidCellView.m */,
 			);
 			path = AsteroidIdentifier;
 			sourceTree = "<group>";
@@ -144,6 +152,7 @@
 				5546ECFA1CCBE6FA002A1E0A /* Assets.xcassets in Resources */,
 				5546ECF81CCBE6FA002A1E0A /* art.scnassets in Resources */,
 				5546ECFD1CCBE6FA002A1E0A /* MainMenu.xib in Resources */,
+				555C98BA1CCC49DB009D1265 /* PresetUnknownAsteroids.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -155,6 +164,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5546ECF61CCBE6FA002A1E0A /* GameViewController.m in Sources */,
+				555C98BD1CCC5AD2009D1265 /* AsteroidCellView.m in Sources */,
 				5546ECF31CCBE6FA002A1E0A /* GameView.m in Sources */,
 				5546ECF01CCBE6FA002A1E0A /* main.m in Sources */,
 				5546ECED1CCBE6FA002A1E0A /* AppDelegate.m in Sources */,
@@ -299,6 +309,7 @@
 				5546ED031CCBE6FA002A1E0A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

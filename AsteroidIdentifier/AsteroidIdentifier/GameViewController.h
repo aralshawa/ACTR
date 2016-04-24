@@ -10,8 +10,9 @@
 
 #import "GameView.h"
 
-@interface GameViewController : NSViewController
+@interface GameViewController : NSViewController <NSTableViewDelegate, NSTableViewDataSource>
 
 @property (assign) IBOutlet GameView *gameView;
+@property (weak) IBOutlet NSTableView *asteroidTableView;
 
 @end

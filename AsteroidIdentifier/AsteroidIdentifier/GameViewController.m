@@ -7,6 +7,7 @@
 //
 
 #import "GameViewController.h"
+#import "AsteroidCellView.h"
 
 @implementation GameViewController {
 	SCNScene *_scene;
@@ -20,6 +21,8 @@
 	SCNNode *_subtitleNode;
 	
 	SCNNode *_asteroid;
+	
+	NSDictionary *_unknownAsteroidsDictionary;
 }
 
 -(void)awakeFromNib
@@ -78,20 +81,36 @@
     self.gameView.backgroundColor = [NSColor blackColor];
 	
 	_scene = scene;
+
+	[self initGameViewTitles];
+	
+	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+		// Retreieve asteroid data from PropertyList
+		_unknownAsteroidsDictionary = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"PresetUnknownAsteroids" ofType:@"plist"]];
+		
+		dispatch_async(dispatch_get_main_queue(), ^{
+			[self.asteroidTableView reloadData];
+		});
+	});
 }
 
 -(void)viewWillAppear
 {
 	[super viewWillAppear];
 	
-//	SCNNode rootNode = [_scene.rootNode childNodeWithName:@"rootNode" recursively:YES];
-	
+//	dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//		[self updateTitleWithString:@"YAY!"];
+//		[self updateSubtitleWithString:@"WOOT!\nWOOT!!"];
+//	});
+}
+
+- (void)initGameViewTitles
+{
 	_textNode = [SCNNode node];
-//	SCNVector3 shipParentPos = [_asteroid convertPosition:_asteroid.position toNode:_asteroid.parentNode];
 	_textNode.position = SCNVector3Make(180, 200, -10);
 	
 	[_asteroid addChildNode:_textNode];
-
+	
 	
 	_titleNode = [SCNNode node];
 	
@@ -121,9 +140,9 @@
 	
 	
 	_subtitleNode = [SCNNode node];
-
+	
 	SCNText *subtitleText = [SCNText textWithString:@"Class A :D\nClass B :(" extrusionDepth:2.f];
-
+	
 	_subtitleNode.geometry = subtitleText;
 	subtitleText.flatness = .4f;
 	subtitleText.chamferRadius = 0.f;
@@ -165,13 +184,6 @@
 		_subtitleNode.opacity = 1;
 	}
 	[SCNTransaction commit];
-	
-	
-	dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-		[self updateTitleWithString:@"YAY!"];
-		[self updateSubtitleWithString:@"WOOT!\nWOOT!!"];
-	});
-	
 }
 
 - (void)updateTitleWithString:(NSString *)title

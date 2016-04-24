@@ -65,8 +65,8 @@
 
     // animate the 3d object
     CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"rotation"];
-    animation.toValue = [NSValue valueWithSCNVector4:SCNVector4Make(0, 1, 0, M_PI*2)];
-    animation.duration = 10;
+    animation.toValue = [NSValue valueWithSCNVector4:SCNVector4Make(0, 1, 0, M_PI * 2)];
+    animation.duration = 24;
     animation.repeatCount = MAXFLOAT; //repeat forever
     [_asteroid addAnimation:animation forKey:nil];
 
@@ -100,22 +100,12 @@
 	});
 }
 
--(void)viewWillAppear
-{
-	[super viewWillAppear];
-	
-//	dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//		[self updateTitleWithString:@"YAY!"];
-//		[self updateSubtitleWithString:@"WOOT!\nWOOT!!"];
-//	});
-}
-
 - (void)initGameViewTitles
 {
 	_textNode = [SCNNode node];
-	_textNode.position = SCNVector3Make(180, 200, -10);
+	_textNode.position = SCNVector3Make(170, 200, -15);
 	
-	[_asteroid addChildNode:_textNode];
+	[_asteroid.parentNode addChildNode:_textNode];
 	
 	// Build the title node  - - -
 	_titleNode = [SCNNode node];
@@ -124,7 +114,7 @@
 	_titleNode.geometry = titleText;
 	titleText.flatness = .4f;
 	titleText.chamferRadius = 1.f;
-	titleText.font = [NSFont fontWithName:@"Myriad Set" size:48] ?: [NSFont fontWithName:@"Avenir Medium" size:48];
+	titleText.font = [NSFont fontWithName:@"Myriad Set" size:38] ?: [NSFont fontWithName:@"Avenir Medium" size:38];
 	
 	NSLayoutManager *layoutManager = [[NSLayoutManager alloc] init];
 	CGFloat leading = [layoutManager defaultLineHeightForFont:titleText.font];
@@ -153,7 +143,7 @@
 	_subtitleNode.geometry = subtitleText;
 	subtitleText.flatness = .4f;
 	subtitleText.chamferRadius = 0.f;
-	subtitleText.font = [NSFont fontWithName:@"Myriad Set" size:38] ?: [NSFont fontWithName:@"Avenir Medium" size:38];
+	subtitleText.font = [NSFont fontWithName:@"Myriad Set" size:28] ?: [NSFont fontWithName:@"Avenir Medium" size:28];
 	
 	NSLayoutManager *layoutManager2 = [[NSLayoutManager alloc] init];
 	CGFloat leading2 = [layoutManager2 defaultLineHeightForFont:subtitleText.font];

@@ -7,12 +7,15 @@
 //
 
 #import <SceneKit/SceneKit.h>
+#import <QuartzCore/QuartzCore.h>
+#import <CorePlot/CorePlot.h>
 
 #import "GameView.h"
 
-@interface GameViewController : NSViewController <NSTableViewDelegate, NSTableViewDataSource>
+@interface GameViewController : NSViewController <NSTableViewDelegate, NSTableViewDataSource, CPTPlotDataSource>
 
 @property (assign) IBOutlet GameView *gameView;
 @property (weak) IBOutlet NSTableView *asteroidTableView;
+@property (weak) IBOutlet CPTGraphHostingView *graphHostView;
 
 @end

@@ -9,9 +9,6 @@
 #import "GameViewController.h"
 #import "AsteroidCellView.h"
 
-#import <QuartzCore/QuartzCore.h>
-#import <CorePlot/CorePlot.h>
-
 @implementation GameViewController {
 	SCNScene *_scene;
 	
@@ -26,6 +23,8 @@
 	SCNNode *_asteroid;
 	
 	NSDictionary *_unknownAsteroidsDictionary;
+	
+	NSString *_selectedAsteroidKey;
 }
 
 -(void)awakeFromNib
@@ -100,6 +99,61 @@
 	});
 }
 
+- (void)viewDidLoad
+{
+	[super viewDidLoad];
+	
+	_selectedAsteroidKey = nil;
+	
+	CPTGraph *graph = [[CPTXYGraph alloc] initWithFrame:self.graphHostView.bounds];
+	self.graphHostView.hostedGraph = graph;
+	
+	CPTXYAxisSet *axisSet = (CPTXYAxisSet *)graph.axisSet;
+	
+	graph.plotAreaFrame.paddingTop    = 20.0;
+	graph.plotAreaFrame.paddingBottom = 50.0;
+	graph.plotAreaFrame.paddingLeft   = 50.0;
+	graph.plotAreaFrame.paddingRight  = 50.0;
+	
+	graph.title = @"Reflectance vs. Wavelength";
+	
+	CPTXYAxis *x = axisSet.xAxis;
+	x.majorIntervalLength = [NSNumber numberWithInteger:2];
+	x.minorTicksPerInterval = 1;
+	x.borderWidth = 0;
+	x.majorTickLength = 5.0f;
+	x.minorTickLength = 2.0f;
+	x.axisLineCapMax = [CPTLineCap openArrowPlotLineCap];
+//	x.axisLineCapMax.size = CGSizeMake(8, 10);
+	x.labelingPolicy = CPTAxisLabelingPolicyAutomatic;
+	x.axisTitle = [[CPTAxisTitle alloc] initWithText:@"Wavelength [µm]" textStyle:[CPTTextStyle textStyle]];
+	
+	CPTXYAxis *y = axisSet.yAxis;
+	y.majorIntervalLength = [NSNumber numberWithFloat:.3];
+	y.minorTicksPerInterval = 0.1;
+	y.majorTickLength = 5.0f;
+	y.minorTickLength = 2.0f;
+	y.axisLineCapMax = [CPTLineCap openArrowPlotLineCap];
+	y.axisLineCapMax.size = CGSizeMake(8, 10);
+	y.axisTitle = [[CPTAxisTitle alloc] initWithText:@"Reflectance Ratio" textStyle:[CPTTextStyle textStyle]];
+	
+	
+	CPTXYPlotSpace *plotSpace = (CPTXYPlotSpace *)graph.defaultPlotSpace;
+	
+	[plotSpace setYRange: [CPTPlotRange plotRangeWithLocation:[NSDecimalNumber decimalNumberWithDecimal:CPTDecimalFromFloat(0)] length:[NSDecimalNumber decimalNumberWithDecimal:CPTDecimalFromFloat(2.01)]]];
+	[plotSpace setXRange: [CPTPlotRange plotRangeWithLocation:[NSDecimalNumber decimalNumberWithDecimal:CPTDecimalFromFloat(0)] length:[NSDecimalNumber decimalNumberWithDecimal:CPTDecimalFromFloat(68)]]];
+ 
+	// Create the plot (we do not define actual x/y values yet, these will be supplied by the datasource...)
+	CPTScatterPlot* plot = [[CPTScatterPlot alloc] initWithFrame:CGRectZero];
+	plot.dataLineStyle = nil;
+ 
+	// Let's keep it simple and let this class act as datasource (therefore we implemtn <CPTPlotDataSource>)
+	plot.dataSource = self;
+ 
+	// Finally, add the created plot to the default plot space of the CPTGraph object we created before
+	[graph addPlot:plot toPlotSpace:graph.defaultPlotSpace];
+}
+
 - (void)initGameViewTitles
 {
 	_textNode = [SCNNode node];
@@ -110,7 +164,7 @@
 	// Build the title node  - - -
 	_titleNode = [SCNNode node];
 	
-	SCNText *titleText = [SCNText textWithString:@"Asteroid 117" extrusionDepth:10.f];
+	SCNText *titleText = [SCNText textWithString:@"Asteroid Vesta" extrusionDepth:10.f];
 	_titleNode.geometry = titleText;
 	titleText.flatness = .4f;
 	titleText.chamferRadius = 1.f;
@@ -138,7 +192,7 @@
 	// Build the subtitle node - - -
 	_subtitleNode = [SCNNode node];
 	
-	SCNText *subtitleText = [SCNText textWithString:@"Class A :D\nClass B :(" extrusionDepth:2.f];
+	SCNText *subtitleText = [SCNText textWithString:@"Class ? :D\nClass ? :(" extrusionDepth:2.f];
 	
 	_subtitleNode.geometry = subtitleText;
 	subtitleText.flatness = .4f;
@@ -202,11 +256,6 @@
 	return [_unknownAsteroidsDictionary count];
 }
 
-//- (CGFloat)tableView:(NSTableView *)tableView heightOfRow:(NSInteger)row
-//{
-//	
-//}
-
 - (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
 {
 	AsteroidCellView *cellView = [tableView makeViewWithIdentifier:@"AsteroidCellView" owner:self];
@@ -233,6 +282,9 @@
 		NSString *entryName = splitKey[1];
 		NSString *entrySpectrum = [[_unknownAsteroidsDictionary objectForKey:entryKey] stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"[]"]];
 		NSArray *spectrumEntries = [entrySpectrum componentsSeparatedByString:@","];
+		
+		_selectedAsteroidKey = entryKey;
+		[self.graphHostView.hostedGraph reloadData];
 		
 		// Update the titles to show progress
 		dispatch_async(dispatch_get_main_queue(), ^{
@@ -268,7 +320,7 @@
 			[combined sortUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"conf" ascending:NO]]];
 			
 			dispatch_async(dispatch_get_main_queue(), ^{
-				[self updateSubtitleWithString:[NSString stringWithFormat:@"Class %@  High Conf\nClass %@  Runner Up", combined[0][@"type"], combined[1][@"type"]]];
+				[self updateSubtitleWithString:[NSString stringWithFormat:@"Class %@  High Conf.\nClass %@  Runner Up", combined[0][@"type"], combined[1][@"type"]]];
 			});
 		});
 		
@@ -276,6 +328,34 @@
 	} else {
 		return NO;
 	}
+}
+
+#pragma mark - <CPTPlotDataSource>
+-(NSUInteger)numberOfRecordsForPlot:(CPTPlot *)plotnumberOfRecords {
+	return _selectedAsteroidKey != nil ? 68 : 0;
+}
+
+// This method is here because this class also functions as datasource for our graph
+// Therefore this class implements the CPTPlotDataSource protocol
+-(NSNumber *)numberForPlot:(CPTPlot *)plot field:(NSUInteger)fieldEnum recordIndex:(NSUInteger)index
+{
+	NSString *entrySpectrum = [[_unknownAsteroidsDictionary objectForKey:_selectedAsteroidKey] stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"[]"]];
+	NSArray *spectrumEntries = [entrySpectrum componentsSeparatedByString:@","];
+	
+	// We need to provide an X or Y (this method will be called for each) value for every index
+	if(fieldEnum == CPTScatterPlotFieldX)
+	{
+		return [NSNumber numberWithUnsignedLong:index];
+	} else {
+		return [NSNumber numberWithFloat:[spectrumEntries[index] floatValue]];
+	}
+}
+
+-(CPTPlotSymbol *)symbolForScatterPlot:(CPTScatterPlot *)plot recordIndex:(NSUInteger)index
+{
+	CPTPlotSymbol* symbol = [CPTPlotSymbol crossPlotSymbol];
+	symbol.fill = [CPTFill fillWithColor:[CPTColor whiteColor]];
+	return symbol;
 }
 
 @end

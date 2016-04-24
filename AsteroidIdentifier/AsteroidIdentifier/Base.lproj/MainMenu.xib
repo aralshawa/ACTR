@@ -653,7 +653,7 @@
             <windowCollectionBehavior key="collectionBehavior" fullScreenPrimary="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES"/>
             <rect key="contentRect" x="335" y="390" width="1280" height="720"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1177"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1080"/>
             <value key="minSize" type="size" width="1280" height="720"/>
             <value key="maxSize" type="size" width="1280" height="720"/>
             <view key="contentView" id="372">
@@ -838,8 +838,33 @@
             <connections>
                 <outlet property="asteroidTableView" destination="oOy-9a-ZLu" id="1Pm-Hw-3y7"/>
                 <outlet property="gameView" destination="536" id="No3-Ct-Xwn"/>
+                <outlet property="graphHostView" destination="bYQ-gT-2Hl" id="BD4-xI-ejg"/>
                 <outlet property="view" destination="372" id="bTQ-MN-Ejh"/>
             </connections>
         </viewController>
+        <window title="Details" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" frameAutosaveName="" animationBehavior="default" id="JHN-iG-UJs">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="196" y="213" width="542" height="387"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1080"/>
+            <view key="contentView" id="ubJ-aB-Ag5">
+                <rect key="frame" x="0.0" y="0.0" width="542" height="387"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="bYQ-gT-2Hl" customClass="CPTGraphHostingView">
+                        <rect key="frame" x="20" y="20" width="502" height="347"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="502" id="UwL-VN-bFP"/>
+                            <constraint firstAttribute="height" constant="347" id="t1H-nZ-ohr"/>
+                        </constraints>
+                    </customView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="bYQ-gT-2Hl" firstAttribute="leading" secondItem="ubJ-aB-Ag5" secondAttribute="leading" constant="20" symbolic="YES" id="AGK-Ee-xhz"/>
+                    <constraint firstItem="bYQ-gT-2Hl" firstAttribute="top" secondItem="ubJ-aB-Ag5" secondAttribute="top" constant="20" symbolic="YES" id="zxT-q8-Zz4"/>
+                </constraints>
+            </view>
+            <point key="canvasLocation" x="-233" y="1081.5"/>
+        </window>
     </objects>
 </document>

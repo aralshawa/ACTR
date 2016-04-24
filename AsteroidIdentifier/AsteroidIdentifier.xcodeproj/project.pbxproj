@@ -1,0 +1,306 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5546ECED1CCBE6FA002A1E0A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5546ECEC1CCBE6FA002A1E0A /* AppDelegate.m */; };
+		5546ECF01CCBE6FA002A1E0A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5546ECEF1CCBE6FA002A1E0A /* main.m */; };
+		5546ECF31CCBE6FA002A1E0A /* GameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5546ECF21CCBE6FA002A1E0A /* GameView.m */; };
+		5546ECF61CCBE6FA002A1E0A /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5546ECF51CCBE6FA002A1E0A /* GameViewController.m */; };
+		5546ECF81CCBE6FA002A1E0A /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 5546ECF71CCBE6FA002A1E0A /* art.scnassets */; };
+		5546ECFA1CCBE6FA002A1E0A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5546ECF91CCBE6FA002A1E0A /* Assets.xcassets */; };
+		5546ECFD1CCBE6FA002A1E0A /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5546ECFB1CCBE6FA002A1E0A /* MainMenu.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		5546ECE81CCBE6FA002A1E0A /* AsteroidIdentifier.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AsteroidIdentifier.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5546ECEB1CCBE6FA002A1E0A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		5546ECEC1CCBE6FA002A1E0A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		5546ECEF1CCBE6FA002A1E0A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		5546ECF11CCBE6FA002A1E0A /* GameView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameView.h; sourceTree = "<group>"; };
+		5546ECF21CCBE6FA002A1E0A /* GameView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameView.m; sourceTree = "<group>"; };
+		5546ECF41CCBE6FA002A1E0A /* GameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
+		5546ECF51CCBE6FA002A1E0A /* GameViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
+		5546ECF71CCBE6FA002A1E0A /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
+		5546ECF91CCBE6FA002A1E0A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5546ECFC1CCBE6FA002A1E0A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		5546ECFE1CCBE6FA002A1E0A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5546ECE51CCBE6FA002A1E0A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5546ECDF1CCBE6FA002A1E0A = {
+			isa = PBXGroup;
+			children = (
+				5546ECEA1CCBE6FA002A1E0A /* AsteroidIdentifier */,
+				5546ECE91CCBE6FA002A1E0A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		5546ECE91CCBE6FA002A1E0A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5546ECE81CCBE6FA002A1E0A /* AsteroidIdentifier.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5546ECEA1CCBE6FA002A1E0A /* AsteroidIdentifier */ = {
+			isa = PBXGroup;
+			children = (
+				5546ECEB1CCBE6FA002A1E0A /* AppDelegate.h */,
+				5546ECEC1CCBE6FA002A1E0A /* AppDelegate.m */,
+				5546ECF11CCBE6FA002A1E0A /* GameView.h */,
+				5546ECF21CCBE6FA002A1E0A /* GameView.m */,
+				5546ECF41CCBE6FA002A1E0A /* GameViewController.h */,
+				5546ECF51CCBE6FA002A1E0A /* GameViewController.m */,
+				5546ECF71CCBE6FA002A1E0A /* art.scnassets */,
+				5546ECF91CCBE6FA002A1E0A /* Assets.xcassets */,
+				5546ECFB1CCBE6FA002A1E0A /* MainMenu.xib */,
+				5546ECFE1CCBE6FA002A1E0A /* Info.plist */,
+				5546ECEE1CCBE6FA002A1E0A /* Supporting Files */,
+			);
+			path = AsteroidIdentifier;
+			sourceTree = "<group>";
+		};
+		5546ECEE1CCBE6FA002A1E0A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				5546ECEF1CCBE6FA002A1E0A /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5546ECE71CCBE6FA002A1E0A /* AsteroidIdentifier */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5546ED011CCBE6FA002A1E0A /* Build configuration list for PBXNativeTarget "AsteroidIdentifier" */;
+			buildPhases = (
+				5546ECE41CCBE6FA002A1E0A /* Sources */,
+				5546ECE51CCBE6FA002A1E0A /* Frameworks */,
+				5546ECE61CCBE6FA002A1E0A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AsteroidIdentifier;
+			productName = AsteroidIdentifier;
+			productReference = 5546ECE81CCBE6FA002A1E0A /* AsteroidIdentifier.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5546ECE01CCBE6FA002A1E0A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = "Abdul Al-Shawa";
+				TargetAttributes = {
+					5546ECE71CCBE6FA002A1E0A = {
+						CreatedOnToolsVersion = 7.3;
+					};
+				};
+			};
+			buildConfigurationList = 5546ECE31CCBE6FA002A1E0A /* Build configuration list for PBXProject "AsteroidIdentifier" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 5546ECDF1CCBE6FA002A1E0A;
+			productRefGroup = 5546ECE91CCBE6FA002A1E0A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5546ECE71CCBE6FA002A1E0A /* AsteroidIdentifier */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5546ECE61CCBE6FA002A1E0A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5546ECFA1CCBE6FA002A1E0A /* Assets.xcassets in Resources */,
+				5546ECF81CCBE6FA002A1E0A /* art.scnassets in Resources */,
+				5546ECFD1CCBE6FA002A1E0A /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5546ECE41CCBE6FA002A1E0A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5546ECF61CCBE6FA002A1E0A /* GameViewController.m in Sources */,
+				5546ECF31CCBE6FA002A1E0A /* GameView.m in Sources */,
+				5546ECF01CCBE6FA002A1E0A /* main.m in Sources */,
+				5546ECED1CCBE6FA002A1E0A /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		5546ECFB1CCBE6FA002A1E0A /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5546ECFC1CCBE6FA002A1E0A /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		5546ECFF1CCBE6FA002A1E0A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		5546ED001CCBE6FA002A1E0A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		5546ED021CCBE6FA002A1E0A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = AsteroidIdentifier/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = AAAplications.AsteroidIdentifier;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		5546ED031CCBE6FA002A1E0A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = AsteroidIdentifier/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = AAAplications.AsteroidIdentifier;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5546ECE31CCBE6FA002A1E0A /* Build configuration list for PBXProject "AsteroidIdentifier" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5546ECFF1CCBE6FA002A1E0A /* Debug */,
+				5546ED001CCBE6FA002A1E0A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5546ED011CCBE6FA002A1E0A /* Build configuration list for PBXNativeTarget "AsteroidIdentifier" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5546ED021CCBE6FA002A1E0A /* Debug */,
+				5546ED031CCBE6FA002A1E0A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5546ECE01CCBE6FA002A1E0A /* Project object */;
+}

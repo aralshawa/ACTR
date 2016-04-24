@@ -1,0 +1,719 @@
+PDS_VERSION_ID                     = PDS3                                     
+                                                                              
+RECORD_TYPE                        = "FIXED_LENGTH"                           
+RECORD_BYTES                       = 384                                      
+FILE_RECORDS                       = 146                                      
+                                                                              
+^TABLE                             = "52color.tab"                            
+                                                                              
+DATA_SET_ID                        = "EAR-A-RDR-3-52COLOR-V2.1"               
+PRODUCT_NAME                       = "52-COLOR ASTEROID SURVEY, REFLECTANCES" 
+PRODUCT_ID                         = "DATA052COLOR_TAB"                       
+INSTRUMENT_HOST_ID                 = "OBS376T3"                               
+INSTRUMENT_HOST_NAME               = "MAUNA KEA OBSERVATORY 3.2-M NASA        
+        INFRARED CASSEGRAIN EQUAT. REFLECTOR (IRTF)"                          
+INSTRUMENT_ID                      = "CVF"                                    
+INSTRUMENT_NAME                    = "CIRCULARLY VARIABLE FILTER"             
+TARGET_NAME                        = "ASTEROID"                               
+TARGET_TYPE                        = "ASTEROID"                               
+START_TIME                         = 1983-06-11                               
+STOP_TIME                          = 1987-04-08                               
+PRODUCT_CREATION_TIME              = 2005-01-18  /* File uploaded to OLAF */  
+RECORD_FORMAT                      = "(I5, 1X, A1, 1X, A10, 1X, F6.4, 1X,     
+        F6.4, 1X, F6.4, 1X, F6.4, 1X, F6.4, 1X, F6.4, 1X, F6.4, 1X, F6.4, 1X, 
+        F6.4, 1X, F6.4, 1X, F6.4, 1X, F6.4, 1X, F6.4, 1X, F6.4, 1X, F6.4, 1X, 
+        F6.4, 1X, F6.4, 1X, F6.4, 1X, F6.4, 1X, F6.4, 1X, F6.4, 1X, F6.4, 1X, 
+        F6.4, 1X, F6.4, 1X, F6.4, 1X, F6.4, 1X, F6.4, 1X, F6.4, 1X, F6.4, 1X, 
+        F6.4, 1X, F6.4, 1X, F6.4, 1X, F6.4, 1X, F6.4, 1X, F6.4, 1X, F6.4, 1X, 
+        F6.4, 1X, F6.4, 1X, F6.4, 1X, F6.4, 1X, F6.4, 1X, F6.4, 1X, F6.4, 1X, 
+        F6.4, 1X, F6.4, 1X, F6.4, 1X, F6.4, 1X, F6.4, 1X, F6.4, 1X, F6.4, 1X, 
+        F6.4, 1X, F6.4)"                                                      
+                                                                              
+OBJECT                             = TABLE                                    
+ ROWS                              = 146                                      
+ ROW_BYTES                         = 384                                      
+ INTERCHANGE_FORMAT                = "ASCII"                                  
+ COLUMNS                           = 55                                       
+ DESCRIPTION                       = "The observations were made using a      
+        double CVF (circularly variable filter). The short wavelength portion 
+        of the CVF covered the octave from 0.8 to 1.6 microns with 3 percent  
+        resolution, while the long wavelength portion covered 1.5 to 2.6      
+        microns with 5 percent resolution.  There is some overlap in the      
+        spectral coverage between 1.5 and 1.6 microns, which is evident as a  
+        discontinuity in the wavelengths after the first 32 values, which were
+        obtained with the short wavelength portion, while the remaining 20    
+        values were obtained with the long wavelength portion.  The           
+        reflectances are given in this file, '52color.tab', while the errors  
+        in the reflectances are given in the file '52error.tab'.              
+                                                                              
+            Some wavelength positions correspond to telluric features and were
+        intentionally blanked.  In other cases, especially near the ends of   
+        the CVF, the data were either not taken or were hopelessly noisy, so  
+        those entries were also blanked.  The null value in these cases is    
+        -.9999.                                                               
+                                                                              
+        "                                                                     
+                                                                              
+ OBJECT                            = COLUMN                                   
+  COLUMN_NUMBER                    = 1                                        
+  NAME                             = "AST_NUMBER"                             
+  DESCRIPTION                      = "Asteroid catalog number"                
+  DATA_TYPE                        = "ASCII_INTEGER"                          
+  START_BYTE                       = 1                                        
+  BYTES                            = 5                                        
+  FORMAT                           = "I5"                                     
+ END_OBJECT                        = COLUMN                                   
+                                                                              
+ OBJECT                            = COLUMN                                   
+  COLUMN_NUMBER                    = 2                                        
+  NAME                             = "SOLAR_ANALOG"                           
+  DESCRIPTION                      = "A code letter indicating which solar    
+        analog star was used in reducing the observation. A = 18 Aquarii B =  
+        16 Cygni B O = 13 Orionis V = 70 Virginis"                            
+  DATA_TYPE                        = "CHARACTER"                              
+  START_BYTE                       = 7                                        
+  BYTES                            = 1                                        
+  FORMAT                           = "A1"                                     
+ END_OBJECT                        = COLUMN                                   
+                                                                              
+ OBJECT                            = COLUMN                                   
+  COLUMN_NUMBER                    = 3                                        
+  NAME                             = "OBSERVATION_DATE"                       
+  DESCRIPTION                      = "Date of the observation, in the format  
+        YYYY-MM-DD. Not all dates of observation are available. In particular,
+        those asteroid observations contributed by R. H. Brown did not include
+        observation dates in the original machine readable data file. When no 
+        date were available, this field contains a flag value."               
+  DATA_TYPE                        = "DATE"                                   
+  START_BYTE                       = 9                                        
+  BYTES                            = 10                                       
+  FORMAT                           = "A10"                                    
+  MISSING_CONSTANT                 = "9999-99-99"                             
+ END_OBJECT                        = COLUMN                                   
+                                                                              
+ OBJECT                            = COLUMN                                   
+  COLUMN_NUMBER                    = 4                                        
+  NAME                             = "REFL_08289"                             
+  DESCRIPTION                      = "Reflectance in the 0.8289 micron        
+        bandpass"                                                             
+  DATA_TYPE                        = "ASCII_REAL"                             
+  START_BYTE                       = 20                                       
+  BYTES                            = 6                                        
+  FORMAT                           = "F6.4"                                   
+  MISSING_CONSTANT                 = -.9999                                   
+ END_OBJECT                        = COLUMN                                   
+                                                                              
+ OBJECT                            = COLUMN                                   
+  COLUMN_NUMBER                    = 5                                        
+  NAME                             = "REFL_08533"                             
+  DESCRIPTION                      = "Reflectance in the 0.8533 micron        
+        bandpass"                                                             
+  DATA_TYPE                        = "ASCII_REAL"                             
+  START_BYTE                       = 27                                       
+  BYTES                            = 6                                        
+  FORMAT                           = "F6.4"                                   
+  MISSING_CONSTANT                 = -.9999                                   
+ END_OBJECT                        = COLUMN                                   
+                                                                              
+ OBJECT                            = COLUMN                                   
+  COLUMN_NUMBER                    = 6                                        
+  NAME                             = "REFL_08776"                             
+  DESCRIPTION                      = "Reflectance in the 0.8776 micron        
+        bandpass"                                                             
+  DATA_TYPE                        = "ASCII_REAL"                             
+  START_BYTE                       = 34                                       
+  BYTES                            = 6                                        
+  FORMAT                           = "F6.4"                                   
+  MISSING_CONSTANT                 = -.9999                                   
+ END_OBJECT                        = COLUMN                                   
+                                                                              
+ OBJECT                            = COLUMN                                   
+  COLUMN_NUMBER                    = 7                                        
+  NAME                             = "REFL_09021"                             
+  DESCRIPTION                      = "Reflectance in the 0.9021 micron        
+        bandpass"                                                             
+  DATA_TYPE                        = "ASCII_REAL"                             
+  START_BYTE                       = 41                                       
+  BYTES                            = 6                                        
+  FORMAT                           = "F6.4"                                   
+  MISSING_CONSTANT                 = -.9999                                   
+ END_OBJECT                        = COLUMN                                   
+                                                                              
+ OBJECT                            = COLUMN                                   
+  COLUMN_NUMBER                    = 8                                        
+  NAME                             = "REFL_09265"                             
+  DESCRIPTION                      = "Reflectance in the 0.9265 micron        
+        bandpass"                                                             
+  DATA_TYPE                        = "ASCII_REAL"                             
+  START_BYTE                       = 48                                       
+  BYTES                            = 6                                        
+  FORMAT                           = "F6.4"                                   
+  MISSING_CONSTANT                 = -.9999                                   
+ END_OBJECT                        = COLUMN                                   
+                                                                              
+ OBJECT                            = COLUMN                                   
+  COLUMN_NUMBER                    = 9                                        
+  NAME                             = "REFL_09510"                             
+  DESCRIPTION                      = "Reflectance in the 0.9510 micron        
+        bandpass"                                                             
+  DATA_TYPE                        = "ASCII_REAL"                             
+  START_BYTE                       = 55                                       
+  BYTES                            = 6                                        
+  FORMAT                           = "F6.4"                                   
+  MISSING_CONSTANT                 = -.9999                                   
+ END_OBJECT                        = COLUMN                                   
+                                                                              
+ OBJECT                            = COLUMN                                   
+  COLUMN_NUMBER                    = 10                                       
+  NAME                             = "REFL_09755"                             
+  DESCRIPTION                      = "Reflectance in the 0.9755 micron        
+        bandpass"                                                             
+  DATA_TYPE                        = "ASCII_REAL"                             
+  START_BYTE                       = 62                                       
+  BYTES                            = 6                                        
+  FORMAT                           = "F6.4"                                   
+  MISSING_CONSTANT                 = -.9999                                   
+ END_OBJECT                        = COLUMN                                   
+                                                                              
+ OBJECT                            = COLUMN                                   
+  COLUMN_NUMBER                    = 11                                       
+  NAME                             = "REFL_10001"                             
+  DESCRIPTION                      = "Reflectance in the 1.0001 micron        
+        bandpass"                                                             
+  DATA_TYPE                        = "ASCII_REAL"                             
+  START_BYTE                       = 69                                       
+  BYTES                            = 6                                        
+  FORMAT                           = "F6.4"                                   
+  MISSING_CONSTANT                 = -.9999                                   
+ END_OBJECT                        = COLUMN                                   
+                                                                              
+ OBJECT                            = COLUMN                                   
+  COLUMN_NUMBER                    = 12                                       
+  NAME                             = "REFL_10247"                             
+  DESCRIPTION                      = "Reflectance in the 1.0247 micron        
+        bandpass"                                                             
+  DATA_TYPE                        = "ASCII_REAL"                             
+  START_BYTE                       = 76                                       
+  BYTES                            = 6                                        
+  FORMAT                           = "F6.4"                                   
+  MISSING_CONSTANT                 = -.9999                                   
+ END_OBJECT                        = COLUMN                                   
+                                                                              
+ OBJECT                            = COLUMN                                   
+  COLUMN_NUMBER                    = 13                                       
+  NAME                             = "REFL_10493"                             
+  DESCRIPTION                      = "Reflectance in the 1.0493 micron        
+        bandpass"                                                             
+  DATA_TYPE                        = "ASCII_REAL"                             
+  START_BYTE                       = 83                                       
+  BYTES                            = 6                                        
+  FORMAT                           = "F6.4"                                   
+  MISSING_CONSTANT                 = -.9999                                   
+ END_OBJECT                        = COLUMN                                   
+                                                                              
+ OBJECT                            = COLUMN                                   
+  COLUMN_NUMBER                    = 14                                       
+  NAME                             = "REFL_10740"                             
+  DESCRIPTION                      = "Reflectance in the 1.0740 micron        
+        bandpass"                                                             
+  DATA_TYPE                        = "ASCII_REAL"                             
+  START_BYTE                       = 90                                       
+  BYTES                            = 6                                        
+  FORMAT                           = "F6.4"                                   
+  MISSING_CONSTANT                 = -.9999                                   
+ END_OBJECT                        = COLUMN                                   
+                                                                              
+ OBJECT                            = COLUMN                                   
+  COLUMN_NUMBER                    = 15                                       
+  NAME                             = "REFL_10987"                             
+  DESCRIPTION                      = "Reflectance in the 1.0987 micron        
+        bandpass"                                                             
+  DATA_TYPE                        = "ASCII_REAL"                             
+  START_BYTE                       = 97                                       
+  BYTES                            = 6                                        
+  FORMAT                           = "F6.4"                                   
+  MISSING_CONSTANT                 = -.9999                                   
+ END_OBJECT                        = COLUMN                                   
+                                                                              
+ OBJECT                            = COLUMN                                   
+  COLUMN_NUMBER                    = 16                                       
+  NAME                             = "REFL_11234"                             
+  DESCRIPTION                      = "Reflectance in the 1.1234 micron        
+        bandpass"                                                             
+  DATA_TYPE                        = "ASCII_REAL"                             
+  START_BYTE                       = 104                                      
+  BYTES                            = 6                                        
+  FORMAT                           = "F6.4"                                   
+  MISSING_CONSTANT                 = -.9999                                   
+ END_OBJECT                        = COLUMN                                   
+                                                                              
+ OBJECT                            = COLUMN                                   
+  COLUMN_NUMBER                    = 17                                       
+  NAME                             = "REFL_11482"                             
+  DESCRIPTION                      = "Reflectance in the 1.1482 micron        
+        bandpass"                                                             
+  DATA_TYPE                        = "ASCII_REAL"                             
+  START_BYTE                       = 111                                      
+  BYTES                            = 6                                        
+  FORMAT                           = "F6.4"                                   
+  MISSING_CONSTANT                 = -.9999                                   
+ END_OBJECT                        = COLUMN                                   
+                                                                              
+ OBJECT                            = COLUMN                                   
+  COLUMN_NUMBER                    = 18                                       
+  NAME                             = "REFL_11730"                             
+  DESCRIPTION                      = "Reflectance in the 1.1730 micron        
+        bandpass"                                                             
+  DATA_TYPE                        = "ASCII_REAL"                             
+  START_BYTE                       = 118                                      
+  BYTES                            = 6                                        
+  FORMAT                           = "F6.4"                                   
+  MISSING_CONSTANT                 = -.9999                                   
+ END_OBJECT                        = COLUMN                                   
+                                                                              
+ OBJECT                            = COLUMN                                   
+  COLUMN_NUMBER                    = 19                                       
+  NAME                             = "REFL_11978"                             
+  DESCRIPTION                      = "Reflectance in the 1.1978 micron        
+        bandpass"                                                             
+  DATA_TYPE                        = "ASCII_REAL"                             
+  START_BYTE                       = 125                                      
+  BYTES                            = 6                                        
+  FORMAT                           = "F6.4"                                   
+  MISSING_CONSTANT                 = -.9999                                   
+ END_OBJECT                        = COLUMN                                   
+                                                                              
+ OBJECT                            = COLUMN                                   
+  COLUMN_NUMBER                    = 20                                       
+  NAME                             = "REFL_12227"                             
+  DESCRIPTION                      = "Reflectance in the 1.2227 micron        
+        bandpass"                                                             
+  DATA_TYPE                        = "ASCII_REAL"                             
+  START_BYTE                       = 132                                      
+  BYTES                            = 6                                        
+  FORMAT                           = "F6.4"                                   
+  MISSING_CONSTANT                 = -.9999                                   
+ END_OBJECT                        = COLUMN                                   
+                                                                              
+ OBJECT                            = COLUMN                                   
+  COLUMN_NUMBER                    = 21                                       
+  NAME                             = "REFL_12476"                             
+  DESCRIPTION                      = "Reflectance in the 1.2476 micron        
+        bandpass"                                                             
+  DATA_TYPE                        = "ASCII_REAL"                             
+  START_BYTE                       = 139                                      
+  BYTES                            = 6                                        
+  FORMAT                           = "F6.4"                                   
+  MISSING_CONSTANT                 = -.9999                                   
+ END_OBJECT                        = COLUMN                                   
+                                                                              
+ OBJECT                            = COLUMN                                   
+  COLUMN_NUMBER                    = 22                                       
+  NAME                             = "REFL_12726"                             
+  DESCRIPTION                      = "Reflectance in the 1.2726 micron        
+        bandpass"                                                             
+  DATA_TYPE                        = "ASCII_REAL"                             
+  START_BYTE                       = 146                                      
+  BYTES                            = 6                                        
+  FORMAT                           = "F6.4"                                   
+  MISSING_CONSTANT                 = -.9999                                   
+ END_OBJECT                        = COLUMN                                   
+                                                                              
+ OBJECT                            = COLUMN                                   
+  COLUMN_NUMBER                    = 23                                       
+  NAME                             = "REFL_12976"                             
+  DESCRIPTION                      = "Reflectance in the 1.2976 micron        
+        bandpass"                                                             
+  DATA_TYPE                        = "ASCII_REAL"                             
+  START_BYTE                       = 153                                      
+  BYTES                            = 6                                        
+  FORMAT                           = "F6.4"                                   
+  MISSING_CONSTANT                 = -.9999                                   
+ END_OBJECT                        = COLUMN                                   
+                                                                              
+ OBJECT                            = COLUMN                                   
+  COLUMN_NUMBER                    = 24                                       
+  NAME                             = "REFL_13226"                             
+  DESCRIPTION                      = "Reflectance in the 1.3226 micron        
+        bandpass"                                                             
+  DATA_TYPE                        = "ASCII_REAL"                             
+  START_BYTE                       = 160                                      
+  BYTES                            = 6                                        
+  FORMAT                           = "F6.4"                                   
+  MISSING_CONSTANT                 = -.9999                                   
+ END_OBJECT                        = COLUMN                                   
+                                                                              
+ OBJECT                            = COLUMN                                   
+  COLUMN_NUMBER                    = 25                                       
+  NAME                             = "REFL_13476"                             
+  DESCRIPTION                      = "Reflectance in the 1.3476 micron        
+        bandpass"                                                             
+  DATA_TYPE                        = "ASCII_REAL"                             
+  START_BYTE                       = 167                                      
+  BYTES                            = 6                                        
+  FORMAT                           = "F6.4"                                   
+  MISSING_CONSTANT                 = -.9999                                   
+ END_OBJECT                        = COLUMN                                   
+                                                                              
+ OBJECT                            = COLUMN                                   
+  COLUMN_NUMBER                    = 26                                       
+  NAME                             = "REFL_13727"                             
+  DESCRIPTION                      = "Reflectance in the 1.3727 micron        
+        bandpass"                                                             
+  DATA_TYPE                        = "ASCII_REAL"                             
+  START_BYTE                       = 174                                      
+  BYTES                            = 6                                        
+  FORMAT                           = "F6.4"                                   
+  MISSING_CONSTANT                 = -.9999                                   
+ END_OBJECT                        = COLUMN                                   
+                                                                              
+ OBJECT                            = COLUMN                                   
+  COLUMN_NUMBER                    = 27                                       
+  NAME                             = "REFL_13978"                             
+  DESCRIPTION                      = "Reflectance in the 1.3978 micron        
+        bandpass"                                                             
+  DATA_TYPE                        = "ASCII_REAL"                             
+  START_BYTE                       = 181                                      
+  BYTES                            = 6                                        
+  FORMAT                           = "F6.4"                                   
+  MISSING_CONSTANT                 = -.9999                                   
+ END_OBJECT                        = COLUMN                                   
+                                                                              
+ OBJECT                            = COLUMN                                   
+  COLUMN_NUMBER                    = 28                                       
+  NAME                             = "REFL_14230"                             
+  DESCRIPTION                      = "Reflectance in the 1.4230 micron        
+        bandpass"                                                             
+  DATA_TYPE                        = "ASCII_REAL"                             
+  START_BYTE                       = 188                                      
+  BYTES                            = 6                                        
+  FORMAT                           = "F6.4"                                   
+  MISSING_CONSTANT                 = -.9999                                   
+ END_OBJECT                        = COLUMN                                   
+                                                                              
+ OBJECT                            = COLUMN                                   
+  COLUMN_NUMBER                    = 29                                       
+  NAME                             = "REFL_14482"                             
+  DESCRIPTION                      = "Reflectance in the 1.4482 micron        
+        bandpass"                                                             
+  DATA_TYPE                        = "ASCII_REAL"                             
+  START_BYTE                       = 195                                      
+  BYTES                            = 6                                        
+  FORMAT                           = "F6.4"                                   
+  MISSING_CONSTANT                 = -.9999                                   
+ END_OBJECT                        = COLUMN                                   
+                                                                              
+ OBJECT                            = COLUMN                                   
+  COLUMN_NUMBER                    = 30                                       
+  NAME                             = "REFL_14734"                             
+  DESCRIPTION                      = "Reflectance in the 1.4734 micron        
+        bandpass"                                                             
+  DATA_TYPE                        = "ASCII_REAL"                             
+  START_BYTE                       = 202                                      
+  BYTES                            = 6                                        
+  FORMAT                           = "F6.4"                                   
+  MISSING_CONSTANT                 = -.9999                                   
+ END_OBJECT                        = COLUMN                                   
+                                                                              
+ OBJECT                            = COLUMN                                   
+  COLUMN_NUMBER                    = 31                                       
+  NAME                             = "REFL_14987"                             
+  DESCRIPTION                      = "Reflectance in the 1.4987 micron        
+        bandpass"                                                             
+  DATA_TYPE                        = "ASCII_REAL"                             
+  START_BYTE                       = 209                                      
+  BYTES                            = 6                                        
+  FORMAT                           = "F6.4"                                   
+  MISSING_CONSTANT                 = -.9999                                   
+ END_OBJECT                        = COLUMN                                   
+                                                                              
+ OBJECT                            = COLUMN                                   
+  COLUMN_NUMBER                    = 32                                       
+  NAME                             = "REFL_15240"                             
+  DESCRIPTION                      = "Reflectance in the 1.5240 micron        
+        bandpass"                                                             
+  DATA_TYPE                        = "ASCII_REAL"                             
+  START_BYTE                       = 216                                      
+  BYTES                            = 6                                        
+  FORMAT                           = "F6.4"                                   
+  MISSING_CONSTANT                 = -.9999                                   
+ END_OBJECT                        = COLUMN                                   
+                                                                              
+ OBJECT                            = COLUMN                                   
+  COLUMN_NUMBER                    = 33                                       
+  NAME                             = "REFL_15490"                             
+  DESCRIPTION                      = "Reflectance in the 1.5490 micron        
+        bandpass"                                                             
+  DATA_TYPE                        = "ASCII_REAL"                             
+  START_BYTE                       = 223                                      
+  BYTES                            = 6                                        
+  FORMAT                           = "F6.4"                                   
+  MISSING_CONSTANT                 = -.9999                                   
+ END_OBJECT                        = COLUMN                                   
+                                                                              
+ OBJECT                            = COLUMN                                   
+  COLUMN_NUMBER                    = 34                                       
+  NAME                             = "REFL_15747"                             
+  DESCRIPTION                      = "Reflectance in the 1.5747 micron        
+        bandpass"                                                             
+  DATA_TYPE                        = "ASCII_REAL"                             
+  START_BYTE                       = 230                                      
+  BYTES                            = 6                                        
+  FORMAT                           = "F6.4"                                   
+  MISSING_CONSTANT                 = -.9999                                   
+ END_OBJECT                        = COLUMN                                   
+                                                                              
+ OBJECT                            = COLUMN                                   
+  COLUMN_NUMBER                    = 35                                       
+  NAME                             = "REFL_16001"                             
+  DESCRIPTION                      = "Reflectance in the 1.6001 micron        
+        bandpass"                                                             
+  DATA_TYPE                        = "ASCII_REAL"                             
+  START_BYTE                       = 237                                      
+  BYTES                            = 6                                        
+  FORMAT                           = "F6.4"                                   
+  MISSING_CONSTANT                 = -.9999                                   
+ END_OBJECT                        = COLUMN                                   
+                                                                              
+ OBJECT                            = COLUMN                                   
+  COLUMN_NUMBER                    = 36                                       
+  NAME                             = "REFL_14910"                             
+  DESCRIPTION                      = "Reflectance in the 1.4910 micron        
+        bandpass"                                                             
+  DATA_TYPE                        = "ASCII_REAL"                             
+  START_BYTE                       = 244                                      
+  BYTES                            = 6                                        
+  FORMAT                           = "F6.4"                                   
+  MISSING_CONSTANT                 = -.9999                                   
+ END_OBJECT                        = COLUMN                                   
+                                                                              
+ OBJECT                            = COLUMN                                   
+  COLUMN_NUMBER                    = 37                                       
+  NAME                             = "REFL_15520"                             
+  DESCRIPTION                      = "Reflectance in the 1.5520 micron        
+        bandpass"                                                             
+  DATA_TYPE                        = "ASCII_REAL"                             
+  START_BYTE                       = 251                                      
+  BYTES                            = 6                                        
+  FORMAT                           = "F6.4"                                   
+  MISSING_CONSTANT                 = -.9999                                   
+ END_OBJECT                        = COLUMN                                   
+                                                                              
+ OBJECT                            = COLUMN                                   
+  COLUMN_NUMBER                    = 38                                       
+  NAME                             = "REFL_16150"                             
+  DESCRIPTION                      = "Reflectance in the 1.6150 micron        
+        bandpass"                                                             
+  DATA_TYPE                        = "ASCII_REAL"                             
+  START_BYTE                       = 258                                      
+  BYTES                            = 6                                        
+  FORMAT                           = "F6.4"                                   
+  MISSING_CONSTANT                 = -.9999                                   
+ END_OBJECT                        = COLUMN                                   
+                                                                              
+ OBJECT                            = COLUMN                                   
+  COLUMN_NUMBER                    = 39                                       
+  NAME                             = "REFL_16750"                             
+  DESCRIPTION                      = "Reflectance in the 1.6750 micron        
+        bandpass"                                                             
+  DATA_TYPE                        = "ASCII_REAL"                             
+  START_BYTE                       = 265                                      
+  BYTES                            = 6                                        
+  FORMAT                           = "F6.4"                                   
+  MISSING_CONSTANT                 = -.9999                                   
+ END_OBJECT                        = COLUMN                                   
+                                                                              
+ OBJECT                            = COLUMN                                   
+  COLUMN_NUMBER                    = 40                                       
+  NAME                             = "REFL_17350"                             
+  DESCRIPTION                      = "Reflectance in the 1.7350 micron        
+        bandpass"                                                             
+  DATA_TYPE                        = "ASCII_REAL"                             
+  START_BYTE                       = 272                                      
+  BYTES                            = 6                                        
+  FORMAT                           = "F6.4"                                   
+  MISSING_CONSTANT                 = -.9999                                   
+ END_OBJECT                        = COLUMN                                   
+                                                                              
+ OBJECT                            = COLUMN                                   
+  COLUMN_NUMBER                    = 41                                       
+  NAME                             = "REFL_17950"                             
+  DESCRIPTION                      = "Reflectance in the 1.7950 micron        
+        bandpass"                                                             
+  DATA_TYPE                        = "ASCII_REAL"                             
+  START_BYTE                       = 279                                      
+  BYTES                            = 6                                        
+  FORMAT                           = "F6.4"                                   
+  MISSING_CONSTANT                 = -.9999                                   
+ END_OBJECT                        = COLUMN                                   
+                                                                              
+ OBJECT                            = COLUMN                                   
+  COLUMN_NUMBER                    = 42                                       
+  NAME                             = "REFL_18530"                             
+  DESCRIPTION                      = "Reflectance in the 1.8530 micron        
+        bandpass"                                                             
+  DATA_TYPE                        = "ASCII_REAL"                             
+  START_BYTE                       = 286                                      
+  BYTES                            = 6                                        
+  FORMAT                           = "F6.4"                                   
+  MISSING_CONSTANT                 = -.9999                                   
+ END_OBJECT                        = COLUMN                                   
+                                                                              
+ OBJECT                            = COLUMN                                   
+  COLUMN_NUMBER                    = 43                                       
+  NAME                             = "REFL_19130"                             
+  DESCRIPTION                      = "Reflectance in the 1.9130 micron        
+        bandpass"                                                             
+  DATA_TYPE                        = "ASCII_REAL"                             
+  START_BYTE                       = 293                                      
+  BYTES                            = 6                                        
+  FORMAT                           = "F6.4"                                   
+  MISSING_CONSTANT                 = -.9999                                   
+ END_OBJECT                        = COLUMN                                   
+                                                                              
+ OBJECT                            = COLUMN                                   
+  COLUMN_NUMBER                    = 44                                       
+  NAME                             = "REFL_19700"                             
+  DESCRIPTION                      = "Reflectance in the 1.9700 micron        
+        bandpass"                                                             
+  DATA_TYPE                        = "ASCII_REAL"                             
+  START_BYTE                       = 300                                      
+  BYTES                            = 6                                        
+  FORMAT                           = "F6.4"                                   
+  MISSING_CONSTANT                 = -.9999                                   
+ END_OBJECT                        = COLUMN                                   
+                                                                              
+ OBJECT                            = COLUMN                                   
+  COLUMN_NUMBER                    = 45                                       
+  NAME                             = "REFL_20280"                             
+  DESCRIPTION                      = "Reflectance in the 2.0280 micron        
+        bandpass"                                                             
+  DATA_TYPE                        = "ASCII_REAL"                             
+  START_BYTE                       = 307                                      
+  BYTES                            = 6                                        
+  FORMAT                           = "F6.4"                                   
+  MISSING_CONSTANT                 = -.9999                                   
+ END_OBJECT                        = COLUMN                                   
+                                                                              
+ OBJECT                            = COLUMN                                   
+  COLUMN_NUMBER                    = 46                                       
+  NAME                             = "REFL_20840"                             
+  DESCRIPTION                      = "Reflectance in the 2.0840 micron        
+        bandpass"                                                             
+  DATA_TYPE                        = "ASCII_REAL"                             
+  START_BYTE                       = 314                                      
+  BYTES                            = 6                                        
+  FORMAT                           = "F6.4"                                   
+  MISSING_CONSTANT                 = -.9999                                   
+ END_OBJECT                        = COLUMN                                   
+                                                                              
+ OBJECT                            = COLUMN                                   
+  COLUMN_NUMBER                    = 47                                       
+  NAME                             = "REFL_21400"                             
+  DESCRIPTION                      = "Reflectance in the 2.1400 micron        
+        bandpass"                                                             
+  DATA_TYPE                        = "ASCII_REAL"                             
+  START_BYTE                       = 321                                      
+  BYTES                            = 6                                        
+  FORMAT                           = "F6.4"                                   
+  MISSING_CONSTANT                 = -.9999                                   
+ END_OBJECT                        = COLUMN                                   
+                                                                              
+ OBJECT                            = COLUMN                                   
+  COLUMN_NUMBER                    = 48                                       
+  NAME                             = "REFL_21960"                             
+  DESCRIPTION                      = "Reflectance in the 2.1960 micron        
+        bandpass"                                                             
+  DATA_TYPE                        = "ASCII_REAL"                             
+  START_BYTE                       = 328                                      
+  BYTES                            = 6                                        
+  FORMAT                           = "F6.4"                                   
+  MISSING_CONSTANT                 = -.9999                                   
+ END_OBJECT                        = COLUMN                                   
+                                                                              
+ OBJECT                            = COLUMN                                   
+  COLUMN_NUMBER                    = 49                                       
+  NAME                             = "REFL_22520"                             
+  DESCRIPTION                      = "Reflectance in the 2.2520 micron        
+        bandpass"                                                             
+  DATA_TYPE                        = "ASCII_REAL"                             
+  START_BYTE                       = 335                                      
+  BYTES                            = 6                                        
+  FORMAT                           = "F6.4"                                   
+  MISSING_CONSTANT                 = -.9999                                   
+ END_OBJECT                        = COLUMN                                   
+                                                                              
+ OBJECT                            = COLUMN                                   
+  COLUMN_NUMBER                    = 50                                       
+  NAME                             = "REFL_23060"                             
+  DESCRIPTION                      = "Reflectance in the 2.3060 micron        
+        bandpass"                                                             
+  DATA_TYPE                        = "ASCII_REAL"                             
+  START_BYTE                       = 342                                      
+  BYTES                            = 6                                        
+  FORMAT                           = "F6.4"                                   
+  MISSING_CONSTANT                 = -.9999                                   
+ END_OBJECT                        = COLUMN                                   
+                                                                              
+ OBJECT                            = COLUMN                                   
+  COLUMN_NUMBER                    = 51                                       
+  NAME                             = "REFL_23610"                             
+  DESCRIPTION                      = "Reflectance in the 2.3610 micron        
+        bandpass"                                                             
+  DATA_TYPE                        = "ASCII_REAL"                             
+  START_BYTE                       = 349                                      
+  BYTES                            = 6                                        
+  FORMAT                           = "F6.4"                                   
+  MISSING_CONSTANT                 = -.9999                                   
+ END_OBJECT                        = COLUMN                                   
+                                                                              
+ OBJECT                            = COLUMN                                   
+  COLUMN_NUMBER                    = 52                                       
+  NAME                             = "REFL_24140"                             
+  DESCRIPTION                      = "Reflectance in the 2.4140 micron        
+        bandpass"                                                             
+  DATA_TYPE                        = "ASCII_REAL"                             
+  START_BYTE                       = 356                                      
+  BYTES                            = 6                                        
+  FORMAT                           = "F6.4"                                   
+  MISSING_CONSTANT                 = -.9999                                   
+ END_OBJECT                        = COLUMN                                   
+                                                                              
+ OBJECT                            = COLUMN                                   
+  COLUMN_NUMBER                    = 53                                       
+  NAME                             = "REFL_24660"                             
+  DESCRIPTION                      = "Reflectance in the 2.4660 micron        
+        bandpass"                                                             
+  DATA_TYPE                        = "ASCII_REAL"                             
+  START_BYTE                       = 363                                      
+  BYTES                            = 6                                        
+  FORMAT                           = "F6.4"                                   
+  MISSING_CONSTANT                 = -.9999                                   
+ END_OBJECT                        = COLUMN                                   
+                                                                              
+ OBJECT                            = COLUMN                                   
+  COLUMN_NUMBER                    = 54                                       
+  NAME                             = "REFL_25190"                             
+  DESCRIPTION                      = "Reflectance in the 2.5190 micron        
+        bandpass"                                                             
+  DATA_TYPE                        = "ASCII_REAL"                             
+  START_BYTE                       = 370                                      
+  BYTES                            = 6                                        
+  FORMAT                           = "F6.4"                                   
+  MISSING_CONSTANT                 = -.9999                                   
+ END_OBJECT                        = COLUMN                                   
+                                                                              
+ OBJECT                            = COLUMN                                   
+  COLUMN_NUMBER                    = 55                                       
+  NAME                             = "REFL_25700"                             
+  DESCRIPTION                      = "Reflectance in the 2.5700 micron        
+        bandpass"                                                             
+  DATA_TYPE                        = "ASCII_REAL"                             
+  START_BYTE                       = 377                                      
+  BYTES                            = 6                                        
+  FORMAT                           = "F6.4"                                   
+  MISSING_CONSTANT                 = -.9999                                   
+ END_OBJECT                        = COLUMN                                   
+                                                                              
+END_OBJECT                         = TABLE                                    
+END                                                                           

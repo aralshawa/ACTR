@@ -5,7 +5,7 @@ REF_SPECTRUM = {};
 
 #Call me on startup to generate the dict
 def CreateReference():
-     for root, dirs, files in os.walk(os.getcwd()+"\spectraldata"):
+     for root, dirs, files in os.walk(os.path.dirname(os.path.realpath('__file__'))+"\spectraldata"):
         for file in files:
             if file.endswith(".txt"):
                 
@@ -28,15 +28,15 @@ def CreateReference():
 def GetReferece():
     return REF_SPECTRUM
 
-# def main():
-#     CreateReference()
-#     g = GetReferece()
-#     #print (REF_SPECTRUM) 
-#     for key,val in g.items():
-#         print (key)
-#         for s in val:
-#             print (s[0],"-",s[1])
-#         print ("")
+def main():
+    CreateReference()
+    g = GetReferece()
+    #print (REF_SPECTRUM) 
+    for key,val in g.items():
+        print (key)
+        for s in val:
+            print (s[0],"-",s[1])
+        print ("")
  
-# if __name__ == '__main__':
-#     main()
+if __name__ == '__main__':
+    main()

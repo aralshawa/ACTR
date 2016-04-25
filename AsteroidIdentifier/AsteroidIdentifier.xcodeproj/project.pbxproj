@@ -129,8 +129,8 @@
 		5546ECDF1CCBE6FA002A1E0A = {
 			isa = PBXGroup;
 			children = (
-				555C98E31CCC9186009D1265 /* Frameworks */,
 				5546ECEA1CCBE6FA002A1E0A /* AsteroidIdentifier */,
+				555C98E31CCC9186009D1265 /* Frameworks */,
 				5546ECE91CCBE6FA002A1E0A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -148,18 +148,14 @@
 			children = (
 				5546ECEB1CCBE6FA002A1E0A /* AppDelegate.h */,
 				5546ECEC1CCBE6FA002A1E0A /* AppDelegate.m */,
-				5546ECF11CCBE6FA002A1E0A /* GameView.h */,
-				5546ECF21CCBE6FA002A1E0A /* GameView.m */,
-				5546ECF41CCBE6FA002A1E0A /* GameViewController.h */,
-				5546ECF51CCBE6FA002A1E0A /* GameViewController.m */,
+				559FBC981CCDA536001646FE /* PresetData */,
+				559FBC971CCDA506001646FE /* Controllers */,
+				559FBC961CCDA4FE001646FE /* Views */,
 				5546ECF71CCBE6FA002A1E0A /* art.scnassets */,
 				5546ECF91CCBE6FA002A1E0A /* Assets.xcassets */,
 				5546ECFB1CCBE6FA002A1E0A /* MainMenu.xib */,
 				5546ECFE1CCBE6FA002A1E0A /* Info.plist */,
 				5546ECEE1CCBE6FA002A1E0A /* Supporting Files */,
-				555C98B91CCC49DB009D1265 /* PresetUnknownAsteroids.plist */,
-				555C98BB1CCC5AD2009D1265 /* AsteroidCellView.h */,
-				555C98BC1CCC5AD2009D1265 /* AsteroidCellView.m */,
 			);
 			path = AsteroidIdentifier;
 			sourceTree = "<group>";
@@ -194,6 +190,34 @@
 				555C98E11CCC9093009D1265 /* QuartzCore.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		559FBC961CCDA4FE001646FE /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				555C98BB1CCC5AD2009D1265 /* AsteroidCellView.h */,
+				555C98BC1CCC5AD2009D1265 /* AsteroidCellView.m */,
+				5546ECF11CCBE6FA002A1E0A /* GameView.h */,
+				5546ECF21CCBE6FA002A1E0A /* GameView.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		559FBC971CCDA506001646FE /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				5546ECF41CCBE6FA002A1E0A /* GameViewController.h */,
+				5546ECF51CCBE6FA002A1E0A /* GameViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		559FBC981CCDA536001646FE /* PresetData */ = {
+			isa = PBXGroup;
+			children = (
+				555C98B91CCC49DB009D1265 /* PresetUnknownAsteroids.plist */,
+			);
+			name = PresetData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

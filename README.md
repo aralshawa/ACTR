@@ -12,3 +12,5 @@ Details are available on the [project page](https://2016.spaceappschallenge.org/
 ### Desktop based GUI ###
 
 ![GUI Overview](/media/results_with_plot.png)
+
+*Submitted to the [Waterloo Space Apps Challenge](https://2016.spaceappschallenge.org/locations/waterloo-on-canada) on April 22nd, 2016*
